@@ -992,4 +992,353 @@ select.form-control {
     box-shadow: none;
     border: 1px solid var(--color-border);
   }
+}/* Enhanced Mobile Responsive Design */
+
+/* Base mobile styles */
+@media (max-width: 768px) {
+  /* Reduce container padding on mobile */
+  .container {
+    padding-left: var(--space-12);
+    padding-right: var(--space-12);
+  }
+
+  /* Stack filters vertically */
+  .filters-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+  
+  /* Single column layout for charts */
+  .charts-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+  
+  /* Reduce year filter columns */
+  .year-filters {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+  
+  /* Stack units toggle vertically */
+  .units-toggle {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+  
+  /* Reduce header padding */
+  .dashboard-header {
+    padding: var(--space-16) 0;
+  }
+  
+  .dashboard-header h1 {
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-tight);
+  }
+  
+  .dashboard-subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  /* Reduce chart height for mobile */
+  .chart-container {
+    height: 280px;
+  }
+  
+  /* Make year selector more mobile-friendly */
+  .year-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-6);
+  }
+  
+  .year-selector select {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  /* Improve table responsiveness */
+  .metrics-table {
+    font-size: var(--font-size-xs);
+  }
+  
+  .metrics-table th,
+  .metrics-table td {
+    padding: var(--space-8);
+  }
+  
+  /* Stack summary items vertically */
+  .summary-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+  
+  /* Improve form controls on mobile */
+  .form-control {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: var(--space-12);
+  }
+  
+  /* Better touch targets */
+  .year-checkbox,
+  .radio-option,
+  .checkbox-option {
+    padding: var(--space-8) var(--space-6);
+    min-height: 44px; /* iOS recommended touch target */
+    align-items: center;
+  }
+  
+  /* Improve button sizes */
+  .btn {
+    padding: var(--space-12) var(--space-16);
+    min-height: 44px;
+  }
+  
+  /* Better card spacing */
+  .card__body {
+    padding: var(--space-12);
+  }
+  
+  /* Reduce spacing between sections */
+  .dashboard-content {
+    padding: var(--space-16) 0;
+  }
+  
+  .filters-panel {
+    padding: var(--space-16) 0;
+  }
+}
+
+/* Extra small devices (phones in portrait) */
+@media (max-width: 480px) {
+  /* Single column for year filters */
+  .year-filters {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  /* Further reduce container padding */
+  .container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+  
+  /* Smaller text sizes */
+  .dashboard-header h1 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .chart-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  /* Reduce chart height further */
+  .chart-container {
+    height: 250px;
+  }
+  
+  /* Horizontal scroll for metrics table */
+  .metrics-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .metrics-table table {
+    min-width: 500px;
+  }
+  
+  /* Stack filter options vertically */
+  .filter-group {
+    gap: var(--space-6);
+  }
+  
+  /* Better mobile form styling */
+  .form-label {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-6);
+  }
+  
+  /* Improve touch targets further */
+  .year-checkbox,
+  .radio-option,
+  .checkbox-option {
+    font-size: var(--font-size-sm);
+    padding: var(--space-10) var(--space-8);
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .chart-container {
+    height: 220px;
+  }
+  
+  .dashboard-header {
+    padding: var(--space-12) 0;
+  }
+  
+  .filters-panel {
+    padding: var(--space-12) 0;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .charts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-20);
+  }
+  
+  .filters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-16);
+  }
+  
+  .year-filters {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .chart-container {
+    height: 320px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Better touch targets */
+  .btn {
+    min-height: 48px;
+    padding: var(--space-12) var(--space-20);
+  }
+  
+  .form-control {
+    min-height: 48px;
+    padding: var(--space-12) var(--space-16);
+  }
+  
+  /* Remove hover effects on touch devices */
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .year-checkbox:hover,
+  .radio-option:hover,
+  .checkbox-option:hover {
+    background-color: transparent;
+  }
+  
+  /* Add active states for touch feedback */
+  .year-checkbox:active,
+  .radio-option:active,
+  .checkbox-option:active {
+    background-color: var(--color-secondary);
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Sharper borders and shadows on retina displays */
+  .card {
+    border-width: 0.5px;
+  }
+  
+  .form-control {
+    border-width: 0.5px;
+  }
+}
+
+/* Improved scrolling on mobile */
+.metrics-table {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.metrics-table::-webkit-scrollbar {
+  height: 4px;
+}
+
+.metrics-table::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+.metrics-table::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+/* Safe area handling for devices with notches */
+@supports (padding: max(0px)) {
+  .container {
+    padding-left: max(var(--space-16), env(safe-area-inset-left));
+    padding-right: max(var(--space-16), env(safe-area-inset-right));
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding-left: max(var(--space-12), env(safe-area-inset-left));
+      padding-right: max(var(--space-12), env(safe-area-inset-right));
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding-left: max(var(--space-8), env(safe-area-inset-left));
+      padding-right: max(var(--space-8), env(safe-area-inset-right));
+    }
+  }
+}
+
+/* Accessibility improvements for mobile */
+@media (max-width: 768px) {
+  /* Larger focus indicators */
+  :focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+  
+  /* Better contrast for small screens */
+  .form-label {
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  /* Improved readability */
+  .summary-item p {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+  }
+}
+
+/* Print styles optimization for mobile */
+@media print {
+  .filters-panel {
+    display: none;
+  }
+  
+  .dashboard-content {
+    padding: 0;
+  }
+  
+  .charts-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+  
+  .chart-container {
+    height: 300px;
+  }
+  
+  .card {
+    box-shadow: none;
+    border: 1px solid var(--color-border);
+    break-inside: avoid;
+  }
+  
+  .summary-content {
+    grid-template-columns: 1fr;
+  }
 }
