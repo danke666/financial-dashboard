@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дашборд финансовой отчетности</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <div class="container">
+                <h1>Дашборд финансовой отчетности (2016-2023)</h1>
+                <p class="dashboard-subtitle">Анализ ключевых финансовых показателей компании</p>
+            </div>
+        </header>
+
+        <div class="filters-panel">
+            <div class="container">
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="metric-select" class="form-label">Показатель</label>
+                        <select id="metric-select" class="form-control">
+                            <option value="total_balance">Общий баланс</option>
+                            <option value="fixed_assets">Основные средства</option>
+                            <option value="equity">Собственный капитал</option>
+                            <option value="long_term_assets">Долгосрочные активы</option>
+                            <option value="short_term_assets">Краткосрочные активы</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="form-label">Период анализа</label>
+                        <div class="year-filters">
+                            <label class="year-checkbox">
+                                <input type="checkbox" value="2016" checked> 2016
+                            </label>
+                            <label class="year-checkbox">
+                                <input type="checkbox" value="2017" checked> 2017
+                            </label>
+                            <label class="year-checkbox">
+                                <input type="checkbox" value="2018" checked> 2018
+                            </label>
+                            <label class="year-checkbox">
+                                <input type="checkbox" value="2019" checked> 2019
+                            </label>
+                            <label class="year-checkbox">
+                                <input type="checkbox" value="2020" checked> 2020
+                            </label>
+                            <label class="year-checkbox">
+                                <input type="checkbox" value="2021" checked> 2021
+                            </label>
+                            <label class="year-checkbox">
+                                <input type="checkbox" value="2022" checked> 2022
+                            </label>
+                            <label class="year-checkbox">
+                                <input type="checkbox" value="2023" checked> 2023
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="form-label">Единицы измерения</label>
+                        <div class="units-toggle">
+                            <label class="radio-option">
+                                <input type="radio" name="units" value="thousands" checked>
+                                <span>Тысячи руб.</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="units" value="millions">
+                                <span>Миллионы руб.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="form-label">Дополнительно</label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="show-trend"> Показать тренд
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="dashboard-content">
+            <div class="container">
+                <div class="charts-grid">
+                    <div class="chart-section">
+                        <div class="card">
+                            <div class="card__body">
+                                <h2 class="chart-title">Динамика показателя по годам</h2>
+                                <div class="chart-container">
+                                    <canvas id="main-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-section">
+                        <div class="card">
+                            <div class="card__body">
+                                <h2 class="chart-title">Темпы роста (%)</h2>
+                                <div class="chart-container">
+                                    <canvas id="growth-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-section">
+                        <div class="card">
+                            <div class="card__body">
+                                <h2 class="chart-title">Структура активов</h2>
+                                <div class="year-selector">
+                                    <label for="structure-year">Год:</label>
+                                    <select id="structure-year" class="form-control">
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023" selected>2023</option>
+                                    </select>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="structure-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-section">
+                        <div class="card">
+                            <div class="card__body">
+                                <h2 class="chart-title">Ключевые метрики</h2>
+                                <div class="metrics-table">
+                                    <table id="metrics-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Показатель</th>
+                                                <th>2023</th>
+                                                <th>2016</th>
+                                                <th>Изменение</th>
+                                                <th>Статус</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="metrics-tbody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-summary">
+                    <div class="card">
+                        <div class="card__body">
+                            <h2 class="chart-title">Аналитическая сводка</h2>
+                            <div id="summary-content" class="summary-content">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
